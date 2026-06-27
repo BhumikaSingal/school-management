@@ -1,0 +1,2256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premier Schools Exhibition 2025</title>
+  <meta name="description" content="Discover the best schools at the Premier Schools Exhibition 2025. Explore, connect, and choose the right school for your child." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =============================================
+       CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+    ============================================= */
+    :root {
+      --color-navy:    #0B1F3A;
+      --color-gold:    #C8972B;
+      --color-gold-lt: #E8B84B;
+      --color-cream:   #FAF7F2;
+      --color-white:   #FFFFFF;
+      --color-slate:   #4A5568;
+      --color-slate-lt:#718096;
+      --color-border:  rgba(200,151,43,.25);
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+      --font-ui:      'DM Sans', system-ui, sans-serif;
+
+      --space-xs:  .5rem;
+      --space-sm:  1rem;
+      --space-md:  1.5rem;
+      --space-lg:  2.5rem;
+      --space-xl:  4rem;
+      --space-2xl: 6rem;
+
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+
+      --transition: .35s cubic-bezier(.4,0,.2,1);
+      --shadow-card: 0 4px 24px rgba(11,31,58,.10);
+      --shadow-card-hover: 0 12px 40px rgba(11,31,58,.18);
+
+      --hero-h: 600px;
+    }
+
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-cream);
+      color: var(--color-navy);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    button {
+      cursor: pointer;
+      font-family: var(--font-ui);
+      border: none;
+      background: none;
+    }
+
+    ul { list-style: none; }
+
+    /* =============================================
+       SKIP TO CONTENT
+    ============================================= */
+    .skip-to-content {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      z-index: 9999;
+      padding: .75rem 1.5rem;
+      background: var(--color-gold);
+      color: var(--color-white);
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      transition: top .2s;
+    }
+    .skip-to-content:focus { top: 1rem; outline: 3px solid var(--color-navy); }
+
+    /* =============================================
+       HEADER / NAV
+    ============================================= */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      background: rgba(11,31,58,.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .site-header__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+
+    .site-header__logo {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      color: var(--color-white);
+    }
+
+    .site-header__logo-mark {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-gold), var(--color-gold-lt));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--color-navy);
+      flex-shrink: 0;
+    }
+
+    .site-header__logo-text {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--color-white);
+    }
+
+    .site-header__logo-text span {
+      display: block;
+      font-family: var(--font-body);
+      font-size: .65rem;
+      font-weight: 400;
+      color: var(--color-gold-lt);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .site-nav { display: flex; align-items: center; gap: var(--space-lg); }
+
+    .site-nav__list {
+      display: flex;
+      gap: var(--space-md);
+    }
+
+    .site-nav__list a {
+      font-size: .875rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.8);
+      transition: color var(--transition);
+      padding: .25rem 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .site-nav__list a:hover,
+    .site-nav__list a:focus {
+      color: var(--color-gold-lt);
+      border-bottom-color: var(--color-gold-lt);
+      outline: none;
+    }
+
+    .site-nav__cta {
+      padding: .55rem 1.4rem;
+      background: var(--color-gold);
+      color: var(--color-navy) !important;
+      border-radius: 100px;
+      font-weight: 600 !important;
+      font-size: .875rem !important;
+      transition: background var(--transition), transform var(--transition) !important;
+      border-bottom: none !important;
+    }
+
+    .site-nav__cta:hover, .site-nav__cta:focus {
+      background: var(--color-gold-lt) !important;
+      transform: translateY(-1px);
+      outline: 2px solid var(--color-gold-lt) !important;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      width: 28px;
+      padding: 4px;
+      color: var(--color-white);
+    }
+
+    .nav-toggle__bar {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* =============================================
+       HERO — DUAL-AXIS SLIDER
+    ============================================= */
+    .hero {
+      position: relative;
+      height: var(--hero-h);
+      min-height: 480px;
+      margin-top: 68px;
+      overflow: hidden;
+      background: var(--color-navy);
+    }
+
+    /* Vertical track: clips all horizontal tracks */
+    .hero__v-track {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      transition: transform .7s cubic-bezier(.77,0,.18,1);
+      will-change: transform;
+    }
+
+    /* Each row is one vertical "slide" containing its own horizontal track */
+    .hero__v-slide {
+      min-height: var(--hero-h);
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .hero__h-track {
+      display: flex;
+      height: 100%;
+      transition: transform .6s cubic-bezier(.77,0,.18,1);
+      will-change: transform;
+    }
+
+    .hero__slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Slide backgrounds */
+    .hero__slide--1 { background: linear-gradient(135deg, #0B1F3A 0%, #1A3A6A 60%, #0B2E5A 100%); }
+    .hero__slide--2 { background: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%); }
+    .hero__slide--3 { background: linear-gradient(135deg, #0D2137 0%, #1B4F72 60%, #0B1F3A 100%); }
+    .hero__slide--4 { background: linear-gradient(135deg, #0B1F3A 0%, #2C3E50 60%, #1A252F 100%); }
+
+    .hero__slide-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: .18;
+    }
+
+    .hero__slide-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 30% 50%, rgba(200,151,43,.12) 0%, transparent 60%),
+                        radial-gradient(circle at 70% 80%, rgba(200,151,43,.08) 0%, transparent 50%);
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+      padding: var(--space-xl) var(--space-lg);
+      text-align: center;
+      color: var(--color-white);
+    }
+
+    .hero__eyebrow {
+      display: inline-block;
+      font-family: var(--font-ui);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--color-gold-lt);
+      margin-bottom: var(--space-sm);
+      padding: .35rem 1rem;
+      border: 1px solid rgba(200,151,43,.4);
+      border-radius: 100px;
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: var(--space-md);
+      background: linear-gradient(135deg, #FFFFFF 0%, rgba(255,255,255,.85) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero__title em {
+      font-style: normal;
+      -webkit-text-fill-color: var(--color-gold-lt);
+      color: var(--color-gold-lt);
+    }
+
+    .hero__desc {
+      font-size: clamp(.9rem, 1.5vw, 1.1rem);
+      color: rgba(255,255,255,.75);
+      margin-bottom: var(--space-lg);
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero__actions {
+      display: flex;
+      gap: var(--space-sm);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .8rem 2rem;
+      border-radius: 100px;
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: .9rem;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid var(--color-gold-lt);
+      outline-offset: 3px;
+    }
+
+    .btn--primary {
+      background: var(--color-gold);
+      color: var(--color-navy);
+    }
+
+    .btn--primary:hover { background: var(--color-gold-lt); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(200,151,43,.4); }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--color-white);
+      border: 2px solid rgba(255,255,255,.5);
+    }
+
+    .btn--outline:hover { border-color: var(--color-white); transform: translateY(-2px); }
+
+    /* Hero controls */
+    .hero__controls {
+      position: absolute;
+      bottom: var(--space-md);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .hero__dots {
+      display: flex;
+      gap: .5rem;
+    }
+
+    .hero__dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.35);
+      transition: background var(--transition), transform var(--transition);
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+
+    .hero__dot[aria-selected="true"] {
+      background: var(--color-gold-lt);
+      transform: scale(1.3);
+    }
+
+    .hero__dot:focus-visible { outline: 2px solid var(--color-gold-lt); outline-offset: 3px; }
+
+    .hero__nav-arrows {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 var(--space-sm);
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .hero__arrow {
+      pointer-events: all;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: rgba(11,31,58,.6);
+      border: 1px solid rgba(255,255,255,.2);
+      color: var(--color-white);
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition), transform var(--transition);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero__arrow:hover { background: var(--color-gold); transform: scale(1.1); }
+    .hero__arrow:focus-visible { outline: 3px solid var(--color-gold-lt); outline-offset: 3px; }
+
+    .hero__arrow svg { width: 20px; height: 20px; }
+
+    .hero__v-arrows {
+      position: absolute;
+      right: var(--space-sm);
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      z-index: 10;
+    }
+
+    .hero__pause {
+      position: absolute;
+      top: var(--space-sm);
+      right: var(--space-sm);
+      z-index: 10;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(11,31,58,.6);
+      border: 1px solid rgba(255,255,255,.2);
+      color: var(--color-white);
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(8px);
+      transition: background var(--transition);
+    }
+
+    .hero__pause:hover { background: var(--color-gold); }
+    .hero__pause:focus-visible { outline: 3px solid var(--color-gold-lt); outline-offset: 3px; }
+
+    .hero__pause svg { width: 16px; height: 16px; }
+
+    /* =============================================
+       SECTION COMMON
+    ============================================= */
+    .section {
+      padding: var(--space-2xl) 0;
+    }
+
+    .section--alt { background: var(--color-white); }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    .section__header {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+
+    .section__eyebrow {
+      display: inline-block;
+      font-family: var(--font-ui);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: .75rem;
+    }
+
+    .section__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+      font-weight: 900;
+      color: var(--color-navy);
+      line-height: 1.15;
+      margin-bottom: .75rem;
+    }
+
+    .section__sub {
+      font-size: 1rem;
+      color: var(--color-slate);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* =============================================
+       LOGOS — CONTINUOUS SLING
+    ============================================= */
+    .logos-section {
+      padding: var(--space-xl) 0;
+      background: var(--color-navy);
+      overflow: hidden;
+    }
+
+    .logos-section__label {
+      text-align: center;
+      font-family: var(--font-ui);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--color-gold-lt);
+      margin-bottom: var(--space-lg);
+    }
+
+    .logos-track-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .logos-track-wrapper::before,
+    .logos-track-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 80px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .logos-track-wrapper::before { left: 0; background: linear-gradient(to right, var(--color-navy), transparent); }
+    .logos-track-wrapper::after  { right: 0; background: linear-gradient(to left, var(--color-navy), transparent); }
+
+    .logos-track-wrapper:hover .logos-track,
+    .logos-track-wrapper:focus-within .logos-track { animation-play-state: paused; }
+
+    .logos-track {
+      display: flex;
+      gap: var(--space-xl);
+      width: max-content;
+      align-items: center;
+      padding: var(--space-xs) 0;
+    }
+
+    .logos-track--ltr { animation: sling-ltr 28s linear infinite; }
+    .logos-track--rtl { animation: sling-rtl 32s linear infinite; }
+
+    @keyframes sling-ltr {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    @keyframes sling-rtl {
+      from { transform: translateX(-50%); }
+      to   { transform: translateX(0); }
+    }
+
+    .logos-row { margin-bottom: var(--space-md); }
+    .logos-row:last-child { margin-bottom: 0; }
+
+    .logo-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      padding: .75rem 1.5rem;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius-md);
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .logo-item:hover, .logo-item:focus-within {
+      background: rgba(200,151,43,.12);
+      border-color: rgba(200,151,43,.3);
+    }
+
+    .logo-item:focus-visible { outline: 2px solid var(--color-gold-lt); }
+
+    .logo-item__icon {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--color-navy);
+      flex-shrink: 0;
+    }
+
+    .logo-item__name {
+      font-size: .8rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.8);
+      font-family: var(--font-ui);
+    }
+
+    /* =============================================
+       CHOOSE THE SCHOOL — 4 CARDS / MOBILE SLIDER
+    ============================================= */
+    .schools-section {}
+
+    .schools-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-md);
+    }
+
+    .school-card {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: transform var(--transition), box-shadow var(--transition);
+      border: 1px solid rgba(11,31,58,.07);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .school-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .school-card:focus-within { outline: 3px solid var(--color-gold); outline-offset: 2px; }
+
+    .school-card__image {
+      height: 180px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .school-card__image-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform .6s ease;
+    }
+
+    .school-card:hover .school-card__image-bg { transform: scale(1.05); }
+
+    .school-card__badge {
+      position: absolute;
+      top: var(--space-xs);
+      right: var(--space-xs);
+      background: var(--color-gold);
+      color: var(--color-navy);
+      font-size: .65rem;
+      font-weight: 700;
+      padding: .25rem .6rem;
+      border-radius: 100px;
+      font-family: var(--font-ui);
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .school-card__body {
+      padding: var(--space-md);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .school-card__type {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      font-family: var(--font-ui);
+      margin-bottom: .4rem;
+    }
+
+    .school-card__name {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-navy);
+      line-height: 1.25;
+      margin-bottom: .5rem;
+    }
+
+    .school-card__desc {
+      font-size: .85rem;
+      color: var(--color-slate);
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: var(--space-sm);
+    }
+
+    .school-card__meta {
+      display: flex;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    .school-card__meta-item {
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+      font-size: .75rem;
+      color: var(--color-slate-lt);
+      font-family: var(--font-ui);
+    }
+
+    .school-card__meta-item svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    .school-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: .85rem;
+      color: var(--color-gold);
+      transition: gap var(--transition);
+    }
+
+    .school-card__link:hover { gap: .7rem; }
+    .school-card__link:focus-visible { outline: 2px solid var(--color-gold); outline-offset: 3px; border-radius: 2px; }
+
+    .school-card__link svg { width: 16px; height: 16px; }
+
+    /* Mobile slider for schools */
+    .schools-slider-wrapper {
+      display: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .schools-slider-track {
+      display: flex;
+      transition: transform var(--transition);
+    }
+
+    .schools-slider-track .school-card {
+      min-width: calc(85vw);
+      max-width: 340px;
+      margin-right: var(--space-md);
+      flex-shrink: 0;
+    }
+
+    .slider-pagination {
+      display: flex;
+      justify-content: center;
+      gap: .5rem;
+      margin-top: var(--space-md);
+    }
+
+    .slider-pagination__dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(11,31,58,.2);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      padding: 0;
+    }
+
+    .slider-pagination__dot[aria-selected="true"] {
+      background: var(--color-gold);
+      transform: scale(1.3);
+    }
+
+    .slider-pagination__dot:focus-visible { outline: 2px solid var(--color-gold); outline-offset: 3px; }
+
+    /* =============================================
+       EXHIBITION SLIDER
+    ============================================= */
+    .exhibition-section {
+      background: var(--color-navy);
+      padding: var(--space-2xl) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exhibition-section .section__title { color: var(--color-white); }
+    .exhibition-section .section__sub { color: rgba(255,255,255,.65); }
+
+    .exhibition-slider {
+      position: relative;
+    }
+
+    .exhibition-slider__viewport {
+      overflow: hidden;
+    }
+
+    .exhibition-slider__track {
+      display: flex;
+      gap: var(--space-md);
+      transition: transform .5s cubic-bezier(.4,0,.2,1);
+    }
+
+    .exhibition-card {
+      min-width: 360px;
+      max-width: 360px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+
+    .exhibition-card:hover {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(200,151,43,.4);
+      transform: translateY(-4px);
+    }
+
+    .exhibition-card__image {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exhibition-card__image-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform .6s ease;
+    }
+
+    .exhibition-card:hover .exhibition-card__image-bg { transform: scale(1.06); }
+
+    .exhibition-card__tag {
+      position: absolute;
+      top: var(--space-xs);
+      left: var(--space-xs);
+      background: rgba(11,31,58,.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(200,151,43,.4);
+      color: var(--color-gold-lt);
+      font-size: .65rem;
+      font-weight: 600;
+      padding: .3rem .75rem;
+      border-radius: 100px;
+      font-family: var(--font-ui);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .exhibition-card__body {
+      padding: var(--space-md);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .exhibition-card__date {
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--color-gold-lt);
+      font-family: var(--font-ui);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: .4rem;
+    }
+
+    .exhibition-card__title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-white);
+      line-height: 1.3;
+      margin-bottom: .5rem;
+    }
+
+    .exhibition-card__desc {
+      font-size: .85rem;
+      color: rgba(255,255,255,.6);
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: var(--space-sm);
+    }
+
+    .exhibition-card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: var(--space-sm);
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .exhibition-card__stat {
+      font-size: .75rem;
+      color: rgba(255,255,255,.5);
+      font-family: var(--font-ui);
+    }
+
+    .exhibition-card__stat strong { color: var(--color-gold-lt); font-size: 1rem; }
+
+    .exhibition-card__cta {
+      font-family: var(--font-ui);
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--color-gold-lt);
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+      transition: gap var(--transition);
+    }
+
+    .exhibition-card__cta:hover { gap: .6rem; }
+    .exhibition-card__cta:focus-visible { outline: 2px solid var(--color-gold-lt); outline-offset: 3px; border-radius: 2px; }
+
+    .exhibition-card__cta svg { width: 14px; height: 14px; }
+
+    .exhibition-slider__controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin-top: var(--space-lg);
+    }
+
+    .exhibition-slider__arrow {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
+      color: var(--color-white);
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .exhibition-slider__arrow:hover { background: var(--color-gold); transform: scale(1.1); }
+    .exhibition-slider__arrow:focus-visible { outline: 3px solid var(--color-gold-lt); outline-offset: 3px; }
+
+    .exhibition-slider__arrow svg { width: 18px; height: 18px; }
+
+    .exhibition-slider__dots { display: flex; gap: .5rem; }
+
+    .exhibition-slider__dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.25);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      padding: 0;
+    }
+
+    .exhibition-slider__dot[aria-selected="true"] {
+      background: var(--color-gold-lt);
+      transform: scale(1.3);
+    }
+
+    .exhibition-slider__dot:focus-visible { outline: 2px solid var(--color-gold-lt); outline-offset: 3px; }
+
+    /* =============================================
+       EVENT DETAILS / CTA SECTION
+    ============================================= */
+    .event-section {
+      padding: var(--space-2xl) 0;
+    }
+
+    .event-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .event-text__date-box {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      background: var(--color-gold);
+      color: var(--color-navy);
+      padding: .75rem 1.5rem;
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-md);
+    }
+
+    .event-text__date-box svg { width: 20px; height: 20px; }
+
+    .event-text__date-label {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .event-text__date-label span {
+      display: block;
+      font-family: var(--font-body);
+      font-size: .75rem;
+      font-weight: 500;
+      opacity: .8;
+    }
+
+    .event-text__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 900;
+      color: var(--color-navy);
+      line-height: 1.15;
+      margin-bottom: var(--space-sm);
+    }
+
+    .event-text__body {
+      font-size: .95rem;
+      color: var(--color-slate);
+      line-height: 1.7;
+      margin-bottom: var(--space-lg);
+    }
+
+    .event-text__features {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      margin-bottom: var(--space-lg);
+    }
+
+    .event-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+    }
+
+    .event-feature__icon {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-sm);
+      background: rgba(200,151,43,.12);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--color-gold);
+    }
+
+    .event-feature__icon svg { width: 18px; height: 18px; }
+
+    .event-feature__text {
+      font-size: .9rem;
+      color: var(--color-slate);
+      padding-top: .5rem;
+    }
+
+    .event-feature__text strong { color: var(--color-navy); display: block; font-size: .95rem; }
+
+    .event-visual {
+      position: relative;
+    }
+
+    .event-visual__card {
+      background: var(--color-navy);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl) var(--space-lg);
+      text-align: center;
+      color: var(--color-white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .event-visual__card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(200,151,43,.2) 0%, transparent 70%);
+    }
+
+    .event-visual__card-content { position: relative; }
+
+    .event-visual__number {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--color-gold);
+      line-height: 1;
+      margin-bottom: .25rem;
+    }
+
+    .event-visual__label {
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+      font-family: var(--font-ui);
+      margin-bottom: var(--space-lg);
+    }
+
+    .event-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,.1);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: var(--space-lg);
+    }
+
+    .event-stat {
+      background: rgba(255,255,255,.04);
+      padding: var(--space-sm);
+    }
+
+    .event-stat__val {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--color-gold-lt);
+      display: block;
+    }
+
+    .event-stat__key {
+      font-size: .7rem;
+      font-family: var(--font-ui);
+      color: rgba(255,255,255,.5);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .register-btn {
+      width: 100%;
+      padding: 1rem;
+      background: var(--color-gold);
+      color: var(--color-navy);
+      border-radius: 100px;
+      font-family: var(--font-ui);
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .register-btn:hover { background: var(--color-gold-lt); transform: translateY(-2px); }
+    .register-btn:focus-visible { outline: 3px solid var(--color-gold-lt); outline-offset: 3px; }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .site-footer {
+      background: #060F1E;
+      padding: var(--space-xl) 0 var(--space-md);
+      color: rgba(255,255,255,.6);
+    }
+
+    .site-footer__inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: var(--space-xl);
+      margin-bottom: var(--space-xl);
+    }
+
+    .site-footer__brand-name {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-white);
+      margin-bottom: .5rem;
+    }
+
+    .site-footer__brand-desc {
+      font-size: .85rem;
+      line-height: 1.7;
+      margin-bottom: var(--space-md);
+    }
+
+    .site-footer__col-title {
+      font-family: var(--font-ui);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--color-gold-lt);
+      margin-bottom: var(--space-sm);
+    }
+
+    .site-footer__col-links { display: flex; flex-direction: column; gap: .5rem; }
+
+    .site-footer__col-links a {
+      font-size: .85rem;
+      color: rgba(255,255,255,.6);
+      transition: color var(--transition);
+    }
+
+    .site-footer__col-links a:hover { color: var(--color-gold-lt); }
+    .site-footer__col-links a:focus-visible { outline: 2px solid var(--color-gold-lt); outline-offset: 2px; border-radius: 2px; }
+
+    .site-footer__bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .site-footer__copy { font-size: .8rem; }
+
+    /* =============================================
+       PROGRESS BAR
+    ============================================= */
+    .hero__progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: rgba(255,255,255,.15);
+      z-index: 10;
+    }
+
+    .hero__progress-bar {
+      height: 100%;
+      background: var(--color-gold);
+      transition: width .1s linear;
+      width: 0%;
+    }
+
+    /* =============================================
+       FOCUS VISIBLE GLOBAL
+    ============================================= */
+    :focus-visible {
+      outline: 3px solid var(--color-gold);
+      outline-offset: 2px;
+    }
+
+    /* =============================================
+       REDUCED MOTION
+    ============================================= */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+      .hero__v-track, .hero__h-track { transition: none !important; }
+      .logos-track { animation: none !important; }
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 1024px) {
+      .schools-grid { grid-template-columns: repeat(2, 1fr); }
+      .event-grid { grid-template-columns: 1fr; }
+      .exhibition-card { min-width: 300px; max-width: 300px; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --hero-h: 480px; }
+
+      .site-nav__list { display: none; }
+
+      .site-nav__list.is-open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 68px;
+        left: 0; right: 0;
+        background: var(--color-navy);
+        padding: var(--space-md);
+        border-top: 1px solid var(--color-border);
+        gap: var(--space-sm);
+      }
+
+      .nav-toggle { display: flex; }
+      .site-nav { gap: var(--space-sm); }
+
+      /* Schools: hide grid, show slider */
+      .schools-grid { display: none !important; }
+      .schools-slider-wrapper { display: block; }
+
+      .site-footer__inner { grid-template-columns: 1fr; }
+
+      .hero__v-arrows { display: none; }
+      .exhibition-card { min-width: 80vw; max-width: 80vw; }
+
+      .event-stats { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      :root {
+        --space-xl: 3rem;
+        --space-2xl: 4rem;
+      }
+
+      .hero__content { padding: var(--space-lg) var(--space-md); }
+      .hero__arrow { width: 38px; height: 38px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Skip to content -->
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="/" class="site-header__logo" aria-label="Premier Schools Exhibition – Home">
+        <div class="site-header__logo-mark" aria-hidden="true">PSE</div>
+        <div class="site-header__logo-text">
+          Premier Schools
+          <span>Exhibition 2025</span>
+        </div>
+      </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul class="site-nav__list" id="nav-list" role="list">
+          <li><a href="#schools">Schools</a></li>
+          <li><a href="#exhibition">Exhibition</a></li>
+          <li><a href="#event">Event Details</a></li>
+          <li><a href="#event" class="site-nav__cta">Register Now</a></li>
+        </ul>
+        <button class="nav-toggle" aria-controls="nav-list" aria-expanded="false" aria-label="Toggle navigation menu">
+          <span class="nav-toggle__bar" aria-hidden="true"></span>
+          <span class="nav-toggle__bar" aria-hidden="true"></span>
+          <span class="nav-toggle__bar" aria-hidden="true"></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ==================== HERO DUAL-AXIS SLIDER ==================== -->
+    <section
+      class="hero"
+      aria-label="Featured highlights"
+      aria-roledescription="carousel"
+      id="hero"
+    >
+      <!-- Pause button -->
+      <button class="hero__pause" id="hero-pause-btn" aria-label="Pause slideshow" aria-pressed="false">
+        <!-- Pause icon -->
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <rect x="6" y="4" width="4" height="16" rx="1"/>
+          <rect x="14" y="4" width="4" height="16" rx="1"/>
+        </svg>
+      </button>
+
+      <!-- Vertical track (outer) -->
+      <div class="hero__v-track" id="hero-v-track" role="group">
+
+        <!-- ====== Row 0 ====== -->
+        <div class="hero__v-slide" role="group" aria-label="Slide row 1 of 2">
+          <div class="hero__h-track" id="hero-h-track-0">
+
+            <article
+              class="hero__slide hero__slide--1"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="Slide 1 of 4: Opening Ceremony"
+            >
+              <div class="hero__slide-bg" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600&q=80')" aria-hidden="true"></div>
+              <div class="hero__slide-pattern" aria-hidden="true"></div>
+              <div class="hero__content">
+                <span class="hero__eyebrow">Premier Schools Exhibition 2025</span>
+                <h1 class="hero__title">Where <em>Great Schools</em> Meet Bright Futures</h1>
+                <p class="hero__desc">Explore 50+ top schools under one roof. Compare, connect, and make the most informed choice for your child's education.</p>
+                <div class="hero__actions">
+                  <a href="#event" class="btn btn--primary">
+                    Register Free
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                  <a href="#schools" class="btn btn--outline">Explore Schools</a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="hero__slide hero__slide--2"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="Slide 2 of 4: World-Class Faculty"
+            >
+              <div class="hero__slide-bg" style="background-image:url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1600&q=80')" aria-hidden="true"></div>
+              <div class="hero__slide-pattern" aria-hidden="true"></div>
+              <div class="hero__content">
+                <span class="hero__eyebrow">Meet the Educators</span>
+                <h2 class="hero__title"><em>World-Class</em> Faculty at Your Doorstep</h2>
+                <p class="hero__desc">Interact directly with principals, admissions officers, and teachers from the nation's most respected institutions.</p>
+                <div class="hero__actions">
+                  <a href="#event" class="btn btn--primary">Book a Slot</a>
+                  <a href="#exhibition" class="btn btn--outline">View Highlights</a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- ====== Row 1 ====== -->
+        <div class="hero__v-slide" role="group" aria-label="Slide row 2 of 2">
+          <div class="hero__h-track" id="hero-h-track-1">
+
+            <article
+              class="hero__slide hero__slide--3"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="Slide 3 of 4: Scholarships &amp; Admissions"
+            >
+              <div class="hero__slide-bg" style="background-image:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=80')" aria-hidden="true"></div>
+              <div class="hero__slide-pattern" aria-hidden="true"></div>
+              <div class="hero__content">
+                <span class="hero__eyebrow">Scholarships &amp; Admissions</span>
+                <h2 class="hero__title">Unlock <em>Scholarships</em> &amp; Exclusive Offers</h2>
+                <p class="hero__desc">Many participating schools offer on-spot interviews, scholarship assessments, and early admissions at the exhibition.</p>
+                <div class="hero__actions">
+                  <a href="#event" class="btn btn--primary">Learn More</a>
+                  <a href="#schools" class="btn btn--outline">See Schools</a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="hero__slide hero__slide--4"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="Slide 4 of 4: One Day, Many Futures"
+            >
+              <div class="hero__slide-bg" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1600&q=80')" aria-hidden="true"></div>
+              <div class="hero__slide-pattern" aria-hidden="true"></div>
+              <div class="hero__content">
+                <span class="hero__eyebrow">Mark Your Calendar</span>
+                <h2 class="hero__title">One Day. <em>Infinite</em> Possibilities.</h2>
+                <p class="hero__desc">July 19, 2025 · Expo Centre Delhi · 10 AM – 6 PM. Free entry for all families. Limited time slots — register now.</p>
+                <div class="hero__actions">
+                  <a href="#event" class="btn btn--primary">Register Today</a>
+                  <a href="#exhibition" class="btn btn--outline">Exhibition Details</a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+      </div><!-- /v-track -->
+
+      <!-- Horizontal arrows -->
+      <div class="hero__nav-arrows" role="group" aria-label="Slide navigation arrows">
+        <button class="hero__arrow" id="hero-prev" aria-label="Previous slide">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="hero__arrow" id="hero-next" aria-label="Next slide">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <!-- Vertical arrows -->
+      <div class="hero__v-arrows" role="group" aria-label="Vertical slide navigation">
+        <button class="hero__arrow" id="hero-v-up" aria-label="Previous row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+        </button>
+        <button class="hero__arrow" id="hero-v-down" aria-label="Next row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+
+      <!-- Dot controls -->
+      <div class="hero__controls" role="group" aria-label="Slide indicators">
+        <div class="hero__dots" role="tablist" aria-label="Select slide">
+          <button class="hero__dot" role="tab" aria-selected="true"  aria-label="Slide 1" data-index="0"></button>
+          <button class="hero__dot" role="tab" aria-selected="false" aria-label="Slide 2" data-index="1"></button>
+          <button class="hero__dot" role="tab" aria-selected="false" aria-label="Slide 3" data-index="2"></button>
+          <button class="hero__dot" role="tab" aria-selected="false" aria-label="Slide 4" data-index="3"></button>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="hero__progress" aria-hidden="true">
+        <div class="hero__progress-bar" id="hero-progress-bar"></div>
+      </div>
+    </section>
+
+    <!-- ==================== PARTICIPATING SCHOOL LOGOS ==================== -->
+    <section class="logos-section" aria-label="Participating schools" id="logos">
+      <p class="logos-section__label" aria-hidden="true">50+ Schools Participating</p>
+
+      <!-- Row 1: Left to Right -->
+      <div class="logos-row logos-track-wrapper">
+        <ul class="logos-track logos-track--ltr" role="list" aria-label="Participating schools, row 1">
+          <!-- duplicated for seamless loop -->
+          <li class="logo-item" tabindex="0"><span class="logo-item__icon" style="background:#E8F4FD;color:#1A56B0">DPS</span><span class="logo-item__name">Delhi Public School</span></li>
+          <li class="logo-item" tabindex="0"><span class="logo-item__icon" style="background:#FFF0E6;color:#E06C00">RPS</span><span class="logo-item__name">Ryan International</span></li>
+          <li class="logo-item" tabindex="0"><span class="logo-item__icon" style="background:#F0FFF4;color:#276749">GD</span><span class="logo-item__name">GD Goenka World School</span></li>
+          <li class="logo-item" tabindex="0"><span class="logo-item__icon" style="background:#FFF5F5;color:#C53030">ST</span><span class="logo-item__name">Step By Step School</span></li>
+          <li class="logo-item" tabindex="0"><span class="logo-item__icon" style="background:#EBF8FF;color:#2B6CB0">EI</span><span class="logo-item__name">Eton International</span></li>
+          <li class="logo-item" tabindex="0"><span class="logo-item__icon" style="background:#FAF5FF;color:#6B46C1">AP</span><span class="logo-item__name">Amity International</span></li>
+          <li class="logo-item" tabindex="0"><span class="logo-item__icon" style="background:#FFFFF0;color:#975A16">LP</span><span class="logo-item__name">Lotus Petal Foundation</span></li>
+          <li class="logo-item" tabindex="0"><span class="logo-item__icon" style="background:#FFF5F5;color:#9B2C2C">SC</span><span class="logo-item__name">Scottish High International</span></li>
+          <!-- clone for seamless -->
+          <li class="logo-item" aria-hidden="true" tabindex="-1"><span class="logo-item__icon" style="background:#E8F4FD;color:#1A56B0">DPS</span><span class="logo-item__name">Delhi Public School</span></li>
+          <li class="logo-item" aria-hidden="true" tabindex="-1"><span class="logo-item__icon" style="background:#FFF0E6;color:#E06C00">RPS</span><span class="logo-item__name">Ryan International</span></li>
+          <li class="logo-item" aria-hidden="true" tabindex="-1"><span class="logo-item__icon" style="background:#F0FFF4;color:#276749">GD</span><span class="logo-item__name">GD Goenka World School</span></li>
+          <li class="logo-item" aria-hidden="true" tabindex="-1"><span class="logo-item__icon" style="background:#FFF5F5;color:#C53030">ST</span><span class="logo-item__name">Step By Step School</span></li>
+          <li class="logo-item" aria-hidden="true" tabindex="-1"><span class="logo-item__icon" style="background:#EBF8FF;color:#2B6CB0">EI</span><span class="logo-item__name">Eton International</span></li>
+          <li class="logo-item" aria-hidden="true" tabindex="-1"><span class="logo-item__icon" style="background:#FAF5FF;color:#6B46C1">AP</span><span class="logo-item__name">Amity International</span></li>
+          <li class="logo-item" aria-hidden="true" tabindex="-1"><span class="logo-item__icon" style="background:#FFFFF0;color:#975A16">LP</span><span class="logo-item__name">Lotus Petal Foundation</span></li>
+          <li class="logo-item" aria-hidden="true" tabindex="-1"><span class="logo-item__icon" style="background:#FFF5F5;color:#9B2C2C">SC</span><span class="logo-item__name">Scottish High International</span></li>
+        </ul>
+      </div>
+
+      <!-- Row 2: Right to Left -->
+      <div class="logos-row logos-track-wrapper" style="margin-top:var(--space-sm)">
+        <ul class="logos-track logos-track--rtl" role="list" aria-label="Participating schools, row 2">
+          <li class="logo-item" tabindex="0"><span class="logo-item__icon" style="background:#E6FFFA;color:#1D6A5A">WB</span><span class="logo-item__name">Wisdom Bell Academy</span></li>
+          <li class="logo-item" tabindex="0"><span class="logo-item__icon" style="background:#EBF4FF;color:#2C5282">BL</span><span class="logo-item__name">Bloom Public School</span></li>
+          <li class="logo-item" tabindex="0"><span class="logo-item__icon" style="background:#FFF5F5;color:#822727">SB</span><span class="logo-item__name">Suncity School</span></li>
+          <li class="logo-item" tabindex="0"><span class="logo-item__icon" style="background:#F0FFF4;color:#22543D">VG</span><span class="logo-item__name">Vasant Kunj International</span></li>
+          <li class="logo-item" tabindex="0"><span class="logo-item__icon" style="background:#FEFCBF;color:#744210">KP</span><span class="logo-item__name">Kulachi Hansraj Model</span></li>
+          <li class="logo-item" tabindex="0"><span class="logo-item__icon" style="background:#EBF8FF;color:#2A4365">TR</span><span class="logo-item__name">Tagore Baal Niketan</span></li>
+          <li class="logo-item" tabindex="0"><span class="logo-item__icon" style="background:#FFF0F7;color:#97266D">MP</span><span class="logo-item__name">Mount Abu Public School</span></li>
+          <li class="logo-item" tabindex="0"><span class="logo-item__icon" style="background:#FAF5FF;color:#553C9A">NK</span><span class="logo-item__name">Noida International School</span></li>
+          <!-- clone -->
+          <li class="logo-item" aria-hidden="true" tabindex="-1"><span class="logo-item__icon" style="background:#E6FFFA;color:#1D6A5A">WB</span><span class="logo-item__name">Wisdom Bell Academy</span></li>
+          <li class="logo-item" aria-hidden="true" tabindex="-1"><span class="logo-item__icon" style="background:#EBF4FF;color:#2C5282">BL</span><span class="logo-item__name">Bloom Public School</span></li>
+          <li class="logo-item" aria-hidden="true" tabindex="-1"><span class="logo-item__icon" style="background:#FFF5F5;color:#822727">SB</span><span class="logo-item__name">Suncity School</span></li>
+          <li class="logo-item" aria-hidden="true" tabindex="-1"><span class="logo-item__icon" style="background:#F0FFF4;color:#22543D">VG</span><span class="logo-item__name">Vasant Kunj International</span></li>
+          <li class="logo-item" aria-hidden="true" tabindex="-1"><span class="logo-item__icon" style="background:#FEFCBF;color:#744210">KP</span><span class="logo-item__name">Kulachi Hansraj Model</span></li>
+          <li class="logo-item" aria-hidden="true" tabindex="-1"><span class="logo-item__icon" style="background:#EBF8FF;color:#2A4365">TR</span><span class="logo-item__name">Tagore Baal Niketan</span></li>
+          <li class="logo-item" aria-hidden="true" tabindex="-1"><span class="logo-item__icon" style="background:#FFF0F7;color:#97266D">MP</span><span class="logo-item__name">Mount Abu Public School</span></li>
+          <li class="logo-item" aria-hidden="true" tabindex="-1"><span class="logo-item__icon" style="background:#FAF5FF;color:#553C9A">NK</span><span class="logo-item__name">Noida International School</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==================== CHOOSE THE SCHOOL ==================== -->
+    <section class="section schools-section" id="schools" aria-labelledby="schools-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__eyebrow">Featured Institutions</span>
+          <h2 class="section__title" id="schools-title">Choose the Right School</h2>
+          <p class="section__sub">Explore institutions across streams, boards, and philosophies — all verified, all at the exhibition.</p>
+        </header>
+
+        <!-- Desktop grid (4 cols) -->
+        <div class="schools-grid" aria-label="Featured schools grid">
+          <!-- Card 1 -->
+          <article class="school-card" aria-label="Delhi Public School R.K. Puram">
+            <div class="school-card__image">
+              <div class="school-card__image-bg" style="background-image:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80')"></div>
+              <span class="school-card__badge">CBSE</span>
+            </div>
+            <div class="school-card__body">
+              <span class="school-card__type">Day School</span>
+              <h3 class="school-card__name">Delhi Public School, R.K. Puram</h3>
+              <p class="school-card__desc">One of India's most prestigious CBSE schools with over 5 decades of academic excellence and a distinguished alumni network.</p>
+              <ul class="school-card__meta">
+                <li class="school-card__meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+                  New Delhi
+                </li>
+                <li class="school-card__meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 8v4l3 3"/></svg>
+                  Grades 1–12
+                </li>
+              </ul>
+              <a href="#event" class="school-card__link">
+                Learn More
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="school-card" aria-label="GD Goenka World School">
+            <div class="school-card__image">
+              <div class="school-card__image-bg" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80')"></div>
+              <span class="school-card__badge">IB / CBSE</span>
+            </div>
+            <div class="school-card__body">
+              <span class="school-card__type">Residential / Day</span>
+              <h3 class="school-card__name">GD Goenka World School</h3>
+              <p class="school-card__desc">An internationally recognised school offering IB and CBSE curricula across sprawling campuses with world-class facilities.</p>
+              <ul class="school-card__meta">
+                <li class="school-card__meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+                  Gurugram
+                </li>
+                <li class="school-card__meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 8v4l3 3"/></svg>
+                  Grades PG–12
+                </li>
+              </ul>
+              <a href="#event" class="school-card__link">
+                Learn More
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="school-card" aria-label="Amity International School">
+            <div class="school-card__image">
+              <div class="school-card__image-bg" style="background-image:url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&q=80')"></div>
+              <span class="school-card__badge">CBSE</span>
+            </div>
+            <div class="school-card__body">
+              <span class="school-card__type">Day School</span>
+              <h3 class="school-card__name">Amity International School</h3>
+              <p class="school-card__desc">A holistic education philosophy blending academic rigour with arts, sports, and entrepreneurship across multiple campuses.</p>
+              <ul class="school-card__meta">
+                <li class="school-card__meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+                  Noida / Delhi
+                </li>
+                <li class="school-card__meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 8v4l3 3"/></svg>
+                  Grades 1–12
+                </li>
+              </ul>
+              <a href="#event" class="school-card__link">
+                Learn More
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="school-card" aria-label="Scottish High International School">
+            <div class="school-card__image">
+              <div class="school-card__image-bg" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80')"></div>
+              <span class="school-card__badge">IB / IGCSE</span>
+            </div>
+            <div class="school-card__body">
+              <span class="school-card__type">International Day</span>
+              <h3 class="school-card__name">Scottish High International</h3>
+              <p class="school-card__desc">Offering IB, IGCSE and CBSE pathways with a strong focus on global citizenship, research skills, and multilingual education.</p>
+              <ul class="school-card__meta">
+                <li class="school-card__meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+                  Gurugram
+                </li>
+                <li class="school-card__meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 8v4l3 3"/></svg>
+                  Grades PG–12
+                </li>
+              </ul>
+              <a href="#event" class="school-card__link">
+                Learn More
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+        </div><!-- /schools-grid -->
+
+        <!-- Mobile slider -->
+        <div
+          class="schools-slider-wrapper"
+          role="region"
+          aria-label="Featured schools slider"
+          aria-roledescription="carousel"
+        >
+          <div class="schools-slider-track" id="schools-slider-track">
+            <article class="school-card">
+              <div class="school-card__image"><div class="school-card__image-bg" style="background-image:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80')"></div><span class="school-card__badge">CBSE</span></div>
+              <div class="school-card__body"><span class="school-card__type">Day School</span><h3 class="school-card__name">Delhi Public School, R.K. Puram</h3><p class="school-card__desc">One of India's most prestigious CBSE schools with over 5 decades of excellence.</p><a href="#event" class="school-card__link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+            </article>
+            <article class="school-card">
+              <div class="school-card__image"><div class="school-card__image-bg" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80')"></div><span class="school-card__badge">IB / CBSE</span></div>
+              <div class="school-card__body"><span class="school-card__type">Residential / Day</span><h3 class="school-card__name">GD Goenka World School</h3><p class="school-card__desc">International curricula across sprawling campuses with world-class facilities.</p><a href="#event" class="school-card__link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+            </article>
+            <article class="school-card">
+              <div class="school-card__image"><div class="school-card__image-bg" style="background-image:url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&q=80')"></div><span class="school-card__badge">CBSE</span></div>
+              <div class="school-card__body"><span class="school-card__type">Day School</span><h3 class="school-card__name">Amity International School</h3><p class="school-card__desc">Academic rigour with arts, sports, and entrepreneurship across multiple campuses.</p><a href="#event" class="school-card__link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+            </article>
+            <article class="school-card">
+              <div class="school-card__image"><div class="school-card__image-bg" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80')"></div><span class="school-card__badge">IB / IGCSE</span></div>
+              <div class="school-card__body"><span class="school-card__type">International Day</span><h3 class="school-card__name">Scottish High International</h3><p class="school-card__desc">IB, IGCSE and CBSE pathways with a focus on global citizenship and research.</p><a href="#event" class="school-card__link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+            </article>
+          </div>
+
+          <div class="slider-pagination" id="schools-pagination" role="tablist" aria-label="School slide indicators">
+            <button class="slider-pagination__dot" role="tab" aria-selected="true" aria-label="School 1" data-index="0"></button>
+            <button class="slider-pagination__dot" role="tab" aria-selected="false" aria-label="School 2" data-index="1"></button>
+            <button class="slider-pagination__dot" role="tab" aria-selected="false" aria-label="School 3" data-index="2"></button>
+            <button class="slider-pagination__dot" role="tab" aria-selected="false" aria-label="School 4" data-index="3"></button>
+          </div>
+        </div><!-- /schools-slider-wrapper -->
+
+      </div>
+    </section>
+
+    <!-- ==================== EXHIBITION SLIDER ==================== -->
+    <section
+      class="exhibition-section"
+      id="exhibition"
+      aria-labelledby="exhibition-title"
+      aria-roledescription="carousel"
+    >
+      <div class="container">
+        <header class="section__header">
+          <span class="section__eyebrow" style="color:var(--color-gold-lt)">Exhibition Highlights</span>
+          <h2 class="section__title" id="exhibition-title">What to Expect</h2>
+          <p class="section__sub">From panel discussions to scholarship interviews — the PSE 2025 is packed with enriching experiences.</p>
+        </header>
+
+        <div class="exhibition-slider" role="group" aria-label="Exhibition highlights">
+          <div class="exhibition-slider__viewport">
+            <div class="exhibition-slider__track" id="exhibition-track">
+
+              <article class="exhibition-card" role="group" aria-roledescription="slide" aria-label="School Fairs">
+                <div class="exhibition-card__image">
+                  <div class="exhibition-card__image-bg" style="background-image:url('https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=800&q=80')"></div>
+                  <span class="exhibition-card__tag">All Day</span>
+                </div>
+                <div class="exhibition-card__body">
+                  <p class="exhibition-card__date">July 19 · 10 AM – 6 PM</p>
+                  <h3 class="exhibition-card__title">School Stalls &amp; Interactive Booths</h3>
+                  <p class="exhibition-card__desc">Walk through exhibits by 50+ schools. Ask questions, collect brochures, and interact with students and faculty directly.</p>
+                  <div class="exhibition-card__footer">
+                    <div class="exhibition-card__stat"><strong>50+</strong><br><span class="exhibition-card__stat">Schools</span></div>
+                    <a href="#event" class="exhibition-card__cta">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="exhibition-card" role="group" aria-roledescription="slide" aria-label="Panel Discussions">
+                <div class="exhibition-card__image">
+                  <div class="exhibition-card__image-bg" style="background-image:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80')"></div>
+                  <span class="exhibition-card__tag">Keynote</span>
+                </div>
+                <div class="exhibition-card__body">
+                  <p class="exhibition-card__date">July 19 · 11 AM – 1 PM</p>
+                  <h3 class="exhibition-card__title">Expert Panel: Future of Education</h3>
+                  <p class="exhibition-card__desc">Educators, parents, and policy leaders discuss the evolving landscape of K-12 education, curriculum choices, and parenting strategies.</p>
+                  <div class="exhibition-card__footer">
+                    <div class="exhibition-card__stat"><strong>8</strong><br><span class="exhibition-card__stat">Speakers</span></div>
+                    <a href="#event" class="exhibition-card__cta">Register <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="exhibition-card" role="group" aria-roledescription="slide" aria-label="Scholarship Assessments">
+                <div class="exhibition-card__image">
+                  <div class="exhibition-card__image-bg" style="background-image:url('https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=800&q=80')"></div>
+                  <span class="exhibition-card__tag">Limited Slots</span>
+                </div>
+                <div class="exhibition-card__body">
+                  <p class="exhibition-card__date">July 19 · 10 AM – 4 PM</p>
+                  <h3 class="exhibition-card__title">On-Spot Scholarship Interviews</h3>
+                  <p class="exhibition-card__desc">Several schools offer scholarship assessments and on-the-spot admissions. Pre-register to secure your child's slot.</p>
+                  <div class="exhibition-card__footer">
+                    <div class="exhibition-card__stat"><strong>₹2L+</strong><br><span class="exhibition-card__stat">In Scholarships</span></div>
+                    <a href="#event" class="exhibition-card__cta">Secure Slot <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="exhibition-card" role="group" aria-roledescription="slide" aria-label="Career Guidance">
+                <div class="exhibition-card__image">
+                  <div class="exhibition-card__image-bg" style="background-image:url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80')"></div>
+                  <span class="exhibition-card__tag">Workshop</span>
+                </div>
+                <div class="exhibition-card__body">
+                  <p class="exhibition-card__date">July 19 · 2 PM – 4 PM</p>
+                  <h3 class="exhibition-card__title">Career Counselling Workshop</h3>
+                  <p class="exhibition-card__desc">Get personalised career mapping sessions and understand which school's stream best aligns with your child's aptitude and goals.</p>
+                  <div class="exhibition-card__footer">
+                    <div class="exhibition-card__stat"><strong>Free</strong><br><span class="exhibition-card__stat">Entry</span></div>
+                    <a href="#event" class="exhibition-card__cta">Attend <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="exhibition-card" role="group" aria-roledescription="slide" aria-label="Admission Q&amp;A">
+                <div class="exhibition-card__image">
+                  <div class="exhibition-card__image-bg" style="background-image:url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=800&q=80')"></div>
+                  <span class="exhibition-card__tag">Open Forum</span>
+                </div>
+                <div class="exhibition-card__body">
+                  <p class="exhibition-card__date">July 19 · 4 PM – 6 PM</p>
+                  <h3 class="exhibition-card__title">Admissions Open Q&amp;A</h3>
+                  <p class="exhibition-card__desc">Bring your toughest questions for admissions officers from top schools. No intermediaries — direct, transparent conversations.</p>
+                  <div class="exhibition-card__footer">
+                    <div class="exhibition-card__stat"><strong>30+</strong><br><span class="exhibition-card__stat">Advisors</span></div>
+                    <a href="#event" class="exhibition-card__cta">Join <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="exhibition-card" role="group" aria-roledescription="slide" aria-label="Student Showcases">
+                <div class="exhibition-card__image">
+                  <div class="exhibition-card__image-bg" style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80')"></div>
+                  <span class="exhibition-card__tag">Live Performance</span>
+                </div>
+                <div class="exhibition-card__body">
+                  <p class="exhibition-card__date">July 19 · Throughout</p>
+                  <h3 class="exhibition-card__title">Student Talent Showcases</h3>
+                  <p class="exhibition-card__desc">Watch live performances — from robotics demos to cultural shows — curated by students from each participating school.</p>
+                  <div class="exhibition-card__footer">
+                    <div class="exhibition-card__stat"><strong>20+</strong><br><span class="exhibition-card__stat">Performances</span></div>
+                    <a href="#event" class="exhibition-card__cta">View Schedule <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                  </div>
+                </div>
+              </article>
+
+            </div><!-- /track -->
+          </div><!-- /viewport -->
+
+          <div class="exhibition-slider__controls">
+            <button class="exhibition-slider__arrow" id="ex-prev" aria-label="Previous exhibition highlight">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <div class="exhibition-slider__dots" id="ex-dots" role="tablist" aria-label="Exhibition slide indicators">
+              <button class="exhibition-slider__dot" role="tab" aria-selected="true"  aria-label="Highlight 1" data-index="0"></button>
+              <button class="exhibition-slider__dot" role="tab" aria-selected="false" aria-label="Highlight 2" data-index="1"></button>
+              <button class="exhibition-slider__dot" role="tab" aria-selected="false" aria-label="Highlight 3" data-index="2"></button>
+              <button class="exhibition-slider__dot" role="tab" aria-selected="false" aria-label="Highlight 4" data-index="3"></button>
+              <button class="exhibition-slider__dot" role="tab" aria-selected="false" aria-label="Highlight 5" data-index="4"></button>
+              <button class="exhibition-slider__dot" role="tab" aria-selected="false" aria-label="Highlight 6" data-index="5"></button>
+            </div>
+            <button class="exhibition-slider__arrow" id="ex-next" aria-label="Next exhibition highlight">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+
+        </div><!-- /exhibition-slider -->
+      </div>
+    </section>
+
+    <!-- ==================== EVENT DETAILS ==================== -->
+    <section class="section event-section section--alt" id="event" aria-labelledby="event-title">
+      <div class="container">
+        <div class="event-grid">
+          <div class="event-text">
+            <div class="event-text__date-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              <div class="event-text__date-label">
+                July 19, 2025
+                <span>10:00 AM — 6:00 PM</span>
+              </div>
+            </div>
+
+            <h2 class="event-text__title" id="event-title">Register Now — Secure Your Family's Spot</h2>
+            <p class="event-text__body">The Premier Schools Exhibition 2025 is the largest school discovery event in the NCR region. Meet admissions officers, collect prospectuses, attend workshops, and watch your child's eyes light up with possibilities — all in a single day.</p>
+
+            <ul class="event-text__features" role="list">
+              <li class="event-feature">
+                <div class="event-feature__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+                </div>
+                <div class="event-feature__text">
+                  <strong>Expo Centre, Pragati Maidan, New Delhi</strong>
+                  Hall 5 & 6 · Easy metro access from all parts of NCR
+                </div>
+              </li>
+              <li class="event-feature">
+                <div class="event-feature__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 8v4l3 3"/></svg>
+                </div>
+                <div class="event-feature__text">
+                  <strong>Time Slots Available Every 30 Minutes</strong>
+                  Book a specific slot to avoid queues and meet your preferred schools
+                </div>
+              </li>
+              <li class="event-feature">
+                <div class="event-feature__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <div class="event-feature__text">
+                  <strong>Completely Free for Families</strong>
+                  No entry fee — register online for your free e-pass
+                </div>
+              </li>
+            </ul>
+
+            <a href="#" class="btn btn--primary">
+              Register for Free
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <div class="event-visual">
+            <div class="event-visual__card">
+              <div class="event-visual__card-content">
+                <p class="event-visual__number">2025</p>
+                <p class="event-visual__label">Premier Schools Exhibition</p>
+
+                <div class="event-stats" role="list">
+                  <div class="event-stat" role="listitem">
+                    <span class="event-stat__val">50+</span>
+                    <span class="event-stat__key">Schools</span>
+                  </div>
+                  <div class="event-stat" role="listitem">
+                    <span class="event-stat__val">5K+</span>
+                    <span class="event-stat__key">Families</span>
+                  </div>
+                  <div class="event-stat" role="listitem">
+                    <span class="event-stat__val">12+</span>
+                    <span class="event-stat__key">Workshops</span>
+                  </div>
+                </div>
+
+                <button class="register-btn" type="button" onclick="alert('Registration form would open here!')">
+                  Claim Your Free Pass →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="site-footer__inner">
+        <div>
+          <p class="site-footer__brand-name">Premier Schools Exhibition</p>
+          <p class="site-footer__brand-desc">The NCR's most trusted school discovery platform. Connecting families to India's finest educational institutions since 2018.</p>
+        </div>
+        <div>
+          <p class="site-footer__col-title">Quick Links</p>
+          <ul class="site-footer__col-links" role="list">
+            <li><a href="#schools">Participating Schools</a></li>
+            <li><a href="#exhibition">Exhibition Highlights</a></li>
+            <li><a href="#event">Register</a></li>
+            <li><a href="#event">Event Details</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="site-footer__col-title">Contact</p>
+          <ul class="site-footer__col-links" role="list">
+            <li><a href="mailto:info@pse2025.in">info@pse2025.in</a></li>
+            <li><a href="tel:+911800123456">1800-123-456</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p class="site-footer__copy">&copy; 2025 Premier Schools Exhibition. All rights reserved.</p>
+        <p class="site-footer__copy">Expo Centre, Pragati Maidan, New Delhi</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+  (function () {
+    'use strict';
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* =============================================
+       NAV TOGGLE (mobile)
+    ============================================= */
+    const navToggle = document.querySelector('.nav-toggle');
+    const navList   = document.getElementById('nav-list');
+
+    navToggle.addEventListener('click', function () {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', String(!expanded));
+      navList.classList.toggle('is-open', !expanded);
+    });
+
+    /* Close on link click */
+    navList.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navToggle.setAttribute('aria-expanded', 'false');
+        navList.classList.remove('is-open');
+      });
+    });
+
+    /* =============================================
+       HERO DUAL-AXIS SLIDER
+    ============================================= */
+    const slides = [
+      { row: 0, col: 0 },
+      { row: 0, col: 1 },
+      { row: 1, col: 0 },
+      { row: 1, col: 1 },
+    ];
+
+    const vTrack     = document.getElementById('hero-v-track');
+    const hTracks    = [
+      document.getElementById('hero-h-track-0'),
+      document.getElementById('hero-h-track-1'),
+    ];
+    const dots       = document.querySelectorAll('.hero__dot');
+    const prevBtn    = document.getElementById('hero-prev');
+    const nextBtn    = document.getElementById('hero-next');
+    const vUpBtn     = document.getElementById('hero-v-up');
+    const vDownBtn   = document.getElementById('hero-v-down');
+    const pauseBtn   = document.getElementById('hero-pause-btn');
+    const progressBar = document.getElementById('hero-progress-bar');
+
+    let currentIdx  = 0;
+    let paused      = false;
+    let autoTimer   = null;
+    let progressTimer = null;
+    let progressStart = null;
+    const INTERVAL  = 5000;
+
+    /* Pause icon / play icon */
+    const pauseIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>`;
+    const playIcon  = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>`;
+
+    function goTo(idx) {
+      currentIdx = (idx + slides.length) % slides.length;
+      const { row, col } = slides[currentIdx];
+
+      vTrack.style.transform = `translateY(-${row * 100}%)`;
+      hTracks.forEach((t, i) => {
+        const targetCol = (i === row) ? col : 0;
+        t.style.transform = `translateX(-${targetCol * 100}%)`;
+      });
+
+      dots.forEach((d, i) => d.setAttribute('aria-selected', String(i === currentIdx)));
+
+      resetProgress();
+    }
+
+    function next() { goTo(currentIdx + 1); }
+    function prev() { goTo(currentIdx - 1); }
+
+    function startAuto() {
+      if (prefersReducedMotion) return;
+      clearInterval(autoTimer);
+      autoTimer = setInterval(next, INTERVAL);
+      startProgress();
+    }
+
+    function stopAuto() {
+      clearInterval(autoTimer);
+      cancelAnimationFrame(progressTimer);
+    }
+
+    function startProgress() {
+      cancelAnimationFrame(progressTimer);
+      progressStart = performance.now();
+      function frame(now) {
+        const elapsed = now - progressStart;
+        const pct = Math.min((elapsed / INTERVAL) * 100, 100);
+        progressBar.style.width = pct + '%';
+        if (elapsed < INTERVAL) {
+          progressTimer = requestAnimationFrame(frame);
+        }
+      }
+      progressTimer = requestAnimationFrame(frame);
+    }
+
+    function resetProgress() {
+      cancelAnimationFrame(progressTimer);
+      progressBar.style.width = '0%';
+      if (!paused && !prefersReducedMotion) startProgress();
+    }
+
+    /* Controls */
+    nextBtn.addEventListener('click', () => { goTo(currentIdx + 1); stopAuto(); startAuto(); });
+    prevBtn.addEventListener('click', () => { goTo(currentIdx - 1); stopAuto(); startAuto(); });
+
+    vUpBtn.addEventListener('click', () => {
+      const prevRow = slides.findIndex(s => s.row === Math.max(0, slides[currentIdx].row - 1) && s.col === 0);
+      goTo(prevRow >= 0 ? prevRow : 0); stopAuto(); startAuto();
+    });
+
+    vDownBtn.addEventListener('click', () => {
+      const nextRow = slides.findIndex(s => s.row === Math.min(1, slides[currentIdx].row + 1) && s.col === 0);
+      goTo(nextRow >= 0 ? nextRow : currentIdx); stopAuto(); startAuto();
+    });
+
+    pauseBtn.addEventListener('click', function () {
+      paused = !paused;
+      this.setAttribute('aria-pressed', String(paused));
+      this.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow');
+      this.innerHTML = paused ? playIcon : pauseIcon;
+      if (paused) { stopAuto(); }
+      else { startAuto(); }
+    });
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', function () {
+        goTo(parseInt(this.dataset.index, 10));
+        stopAuto(); startAuto();
+      });
+    });
+
+    /* Pause on hover */
+    const heroEl = document.querySelector('.hero');
+    heroEl.addEventListener('mouseenter', () => { if (!paused) stopAuto(); });
+    heroEl.addEventListener('mouseleave', () => { if (!paused) startAuto(); });
+    heroEl.addEventListener('focusin',  () => { if (!paused) stopAuto(); });
+    heroEl.addEventListener('focusout', () => { if (!paused) startAuto(); });
+
+    /* Keyboard */
+    heroEl.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  { prev(); stopAuto(); startAuto(); }
+      if (e.key === 'ArrowRight') { next(); stopAuto(); startAuto(); }
+    });
+
+    /* Touch/Swipe */
+    let touchStartX = 0, touchStartY = 0;
+    heroEl.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    heroEl.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        dx < 0 ? next() : prev();
+        stopAuto(); startAuto();
+      } else if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 40) {
+        const newRow = dy < 0 ? 1 : 0;
+        const idx = slides.findIndex(s => s.row === newRow && s.col === 0);
+        if (idx >= 0) { goTo(idx); stopAuto(); startAuto(); }
+      }
+    }, { passive: true });
+
+    /* Init */
+    goTo(0);
+    startAuto();
+
+    /* =============================================
+       SCHOOLS MOBILE SLIDER
+    ============================================= */
+    const schoolsTrack = document.getElementById('schools-slider-track');
+    const schoolsDots  = document.querySelectorAll('#schools-pagination .slider-pagination__dot');
+    let schoolsIdx = 0;
+
+    function goToSchool(idx) {
+      const cards = schoolsTrack.querySelectorAll('.school-card');
+      schoolsIdx = Math.max(0, Math.min(idx, cards.length - 1));
+      const cardW = cards[0].offsetWidth + parseInt(getComputedStyle(cards[0]).marginRight, 10);
+      schoolsTrack.style.transform = `translateX(-${schoolsIdx * cardW}px)`;
+      schoolsDots.forEach((d, i) => d.setAttribute('aria-selected', String(i === schoolsIdx)));
+    }
+
+    schoolsDots.forEach(d => {
+      d.addEventListener('click', function () { goToSchool(parseInt(this.dataset.index, 10)); });
+    });
+
+    /* Swipe on school slider */
+    let sStartX = 0;
+    const schoolsWrapper = document.querySelector('.schools-slider-wrapper');
+
+    if (schoolsWrapper) {
+      schoolsWrapper.addEventListener('touchstart', e => { sStartX = e.touches[0].clientX; }, { passive: true });
+      schoolsWrapper.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - sStartX;
+        if (Math.abs(dx) > 40) {
+          dx < 0 ? goToSchool(schoolsIdx + 1) : goToSchool(schoolsIdx - 1);
+        }
+      }, { passive: true });
+    }
+
+    window.addEventListener('resize', () => { goToSchool(schoolsIdx); });
+
+    /* =============================================
+       EXHIBITION SLIDER
+    ============================================= */
+    const exTrack   = document.getElementById('exhibition-track');
+    const exDots    = document.querySelectorAll('#ex-dots .exhibition-slider__dot');
+    const exPrev    = document.getElementById('ex-prev');
+    const exNext    = document.getElementById('ex-next');
+    let exIdx       = 0;
+    let exAutoTimer = null;
+
+    function getExVisibleCount() {
+      const vw = window.innerWidth;
+      if (vw < 600)  return 1;
+      if (vw < 1024) return 2;
+      return 3;
+    }
+
+    function goToEx(idx) {
+      const cards = exTrack.querySelectorAll('.exhibition-card');
+      const visible = getExVisibleCount();
+      const max = cards.length - visible;
+      exIdx = Math.max(0, Math.min(idx, max));
+      const cardW = cards[0].offsetWidth + parseInt(getComputedStyle(exTrack).gap || '24', 10);
+      exTrack.style.transform = `translateX(-${exIdx * cardW}px)`;
+      exDots.forEach((d, i) => d.setAttribute('aria-selected', String(i === exIdx)));
+    }
+
+    exPrev.addEventListener('click', () => { goToEx(exIdx - 1); resetExAuto(); });
+    exNext.addEventListener('click', () => { goToEx(exIdx + 1); resetExAuto(); });
+
+    exDots.forEach(d => {
+      d.addEventListener('click', function () { goToEx(parseInt(this.dataset.index, 10)); resetExAuto(); });
+    });
+
+    function startExAuto() {
+      if (prefersReducedMotion) return;
+      clearInterval(exAutoTimer);
+      exAutoTimer = setInterval(() => {
+        const cards = exTrack.querySelectorAll('.exhibition-card');
+        const max = cards.length - getExVisibleCount();
+        goToEx(exIdx >= max ? 0 : exIdx + 1);
+      }, 4000);
+    }
+
+    function resetExAuto() { clearInterval(exAutoTimer); startExAuto(); }
+
+    const exSection = document.querySelector('.exhibition-section');
+    exSection.addEventListener('mouseenter', () => clearInterval(exAutoTimer));
+    exSection.addEventListener('mouseleave', () => startExAuto());
+    exSection.addEventListener('focusin',  () => clearInterval(exAutoTimer));
+    exSection.addEventListener('focusout', () => startExAuto());
+
+    /* Swipe on exhibition */
+    let exStartX = 0;
+    exSection.addEventListener('touchstart', e => { exStartX = e.touches[0].clientX; }, { passive: true });
+    exSection.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - exStartX;
+      if (Math.abs(dx) > 40) {
+        dx < 0 ? goToEx(exIdx + 1) : goToEx(exIdx - 1);
+        resetExAuto();
+      }
+    }, { passive: true });
+
+    /* Keyboard in exhibition */
+    exSection.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  { goToEx(exIdx - 1); resetExAuto(); }
+      if (e.key === 'ArrowRight') { goToEx(exIdx + 1); resetExAuto(); }
+    });
+
+    window.addEventListener('resize', () => { goToEx(exIdx); });
+
+    /* Init */
+    goToEx(0);
+    startExAuto();
+
+  })();
+  </script>
+
+</body>
+</html>
